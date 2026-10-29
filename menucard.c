@@ -5,6 +5,11 @@ int main()
     int choice, quantity;
     int total = 0;
     int price;
+
+    int tea = 0, coffee = 0, sandwich = 0;
+    int burger = 0, pizza = 0, fries = 0;
+    int juice = 0, icecream = 0;
+
     float gst, finalAmount;
 
     do
@@ -80,6 +85,42 @@ int main()
             if (quantity > 0)
             {
                 total = total + (price * quantity);
+
+                switch (choice)
+                {
+                    case 1:
+                        tea = tea + quantity;
+                        break;
+
+                    case 2:
+                        coffee = coffee + quantity;
+                        break;
+
+                    case 3:
+                        sandwich = sandwich + quantity;
+                        break;
+
+                    case 4:
+                        burger = burger + quantity;
+                        break;
+
+                    case 5:
+                        pizza = pizza + quantity;
+                        break;
+
+                    case 6:
+                        fries = fries + quantity;
+                        break;
+
+                    case 7:
+                        juice = juice + quantity;
+                        break;
+
+                    case 8:
+                        icecream = icecream + quantity;
+                        break;
+                }
+
                 printf("Item added successfully!\n");
             }
             else
@@ -89,18 +130,58 @@ int main()
         }
         else if (choice == 9)
         {
+            printf("\n===============================================\n");
+            printf("              EMERTXE CAFE BILL\n");
+            printf("===============================================\n");
+
+            printf("%-15s %8s %10s %10s\n",
+                   "Item", "Quantity", "Price", "Total");
+
+            printf("-----------------------------------------------\n");
+
+            if (tea > 0)
+                printf("%-15s %8d %10d %10d\n",
+                       "Tea", tea, 15, tea * 15);
+
+            if (coffee > 0)
+                printf("%-15s %8d %10d %10d\n",
+                       "Coffee", coffee, 25, coffee * 25);
+
+            if (sandwich > 0)
+                printf("%-15s %8d %10d %10d\n",
+                       "Sandwich", sandwich, 60, sandwich * 60);
+
+            if (burger > 0)
+                printf("%-15s %8d %10d %10d\n",
+                       "Veg Burger", burger, 80, burger * 80);
+
+            if (pizza > 0)
+                printf("%-15s %8d %10d %10d\n",
+                       "Pizza", pizza, 150, pizza * 150);
+
+            if (fries > 0)
+                printf("%-15s %8d %10d %10d\n",
+                       "French Fries", fries, 70, fries * 70);
+
+            if (juice > 0)
+                printf("%-15s %8d %10d %10d\n",
+                       "Fresh Juice", juice, 50, juice * 50);
+
+            if (icecream > 0)
+                printf("%-15s %8d %10d %10d\n",
+                       "Ice Cream", icecream, 40, icecream * 40);
+
+            printf("-----------------------------------------------\n");
+            printf("Total Item Cost: Rs. %d\n", total);
+
             gst = total * 0.05;
             finalAmount = total + gst;
 
-            printf("\n====================================\n");
-            printf("          EMERTXE CAFE BILL\n");
-            printf("====================================\n");
-            printf("Total Item Cost   : Rs. %d\n", total);
-            printf("GST (5%%)          : Rs. %.2f\n", gst);
-            printf("------------------------------------\n");
-            printf("TOTAL BILL        : Rs. %.2f\n",
-                   finalAmount);
-            printf("====================================\n");
+            printf("GST (5%%)       : Rs. %.2f\n", gst);
+            printf("-----------------------------------------------\n");
+            printf("FINAL BILL     : Rs. %.2f\n", finalAmount);
+            printf("===============================================\n");
+
             printf("Thank you for visiting Emertxe Cafe!\n");
         }
         else if (choice == 0)
